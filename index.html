@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="css/styles.css">
+
     <title>Ristorante Con Fusion</title>
 </head>
 
@@ -34,7 +35,7 @@
                                 class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                    <a id="loginButton">
                         <span class="fa fa-sign-in"></span> Login
                     </a>
                 </span>
@@ -81,7 +82,7 @@
         </div>
     </div>
 
-    <div id="reserveTable" class="modal fade" role="dialog">
+    <div id="reserveTableModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
                 <div class="modal-header">
@@ -172,8 +173,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
-                    <a class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#reserveTable"
-                        role="button">Reserve Table</a>
+                    <a id="reserveTableButton" class="btn btn-warning btn-sm btn-block" role="button">Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -309,7 +309,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
     <footer class="footer">
@@ -363,10 +363,11 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#myCarousel').carousel({interval:2000});
-            $('#carouselButton').click(function() {
+        $(document).ready(function () {
+            $('#myCarousel').carousel({ interval: 2000 });
+            $('#carouselButton').click(function () {
                 if ($('#carouselButton').children('span').hasClass('fa-pause')) {
                     $('#carouselButton').children('span').removeClass('fa-pause');
                     $('#carouselButton').children('span').addClass('fa-play');
@@ -376,7 +377,15 @@
                     $('#carouselButton').children('span').addClass('fa-pause');
                     $('#myCarousel').carousel('cycle');
                 }
-                
+
+            });
+
+            $('#loginButton').click(function () {
+                $('#loginModal').modal();
+            });
+
+            $('#reserveTableButton').click(function () {
+                $('#reserveTableModal').modal();
             });
         });
     </script>
